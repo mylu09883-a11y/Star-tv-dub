@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAR TV DUB</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b0b14;color:#fff;font-family:Arial,sans-serif}
+header{padding:22px 18px;border-bottom:1px solid #29293d}
+.logo{font-size:25px;font-weight:bold;color:#a78bfa}
+.logo span{color:#fff}
+main{max-width:650px;margin:auto;padding:25px 18px}
+h1{font-size:30px;margin-bottom:8px}
+p{color:#b7b7ca;line-height:1.6}
+.panel{background:#171725;border:1px solid #303047;border-radius:16px;padding:18px;margin-top:22px}
+label{display:block;margin:17px 0 8px}
+input,select,button{width:100%;padding:13px;border-radius:10px;font-size:15px}
+input,select{background:#0d0d19;color:white;border:1px solid #41415a}
+button{border:0;background:#8b5cf6;color:white;font-weight:bold;margin-top:18px}
+.note{font-size:13px;color:#b7b7ca}
+#status{color:#fbbf24;overflow-wrap:anywhere}
+footer{text-align:center;padding:25px;color:#85859c;font-size:13px}
+</style>
+</head>
+<body>
+<header><div class="logo">★ STAR <span>TV DUB</span></div></header>
+<main>
+<h1>Filmingizga yangi ovoz bering</h1>
+<p>Video tarjimasi va dublyaj loyihangiz uchun shaxsiy studiya.</p>
+<div class="panel">
+<h2>🎬 Video studiyasi</h2>
+<label for="video">Videoni tanlang</label>
+<input id="video" type="file" accept="video/*">
+<label for="source">Asl til</label>
+<select id="source">
+<option value="auto">Avtomatik aniqlash (AI ulanmagan)</option>
+<option value="ru">Rus tili</option>
+<option value="en">Ingliz tili</option>
+<option value="uz">O‘zbek tili</option>
+</select>
+<label for="target">Tarjima tili</label>
+<select id="target">
+<option value="uz">O‘zbekcha</option>
+<option value="ru">Ruscha</option>
+<option value="en">Inglizcha</option>
+<option value="tr">Turkcha</option>
+</select>
+<button id="start">Dublyajni boshlash</button>
+<p id="status" role="status">Hozircha AI dublyaj tizimi ulanmagan.</p>
+<p class="note">Bu versiya video tanlashni sinaydi. Fayl serverga yuborilmaydi, tarjima yoki ovoz yaratilmaydi.</p>
+</div>
+</main>
+<footer>STAR TV DUB · Shaxsiy AI dublyaj loyihasi</footer>
+<script>
+const video=document.getElementById('video');
+const status=document.getElementById('status');
+video.addEventListener('change',()=>{
+ const f=video.files[0];
+ status.textContent=f
+ ? 'Tanlangan fayl: '+f.name+' ('+(f.size/1024/1024).toFixed(1)+' MB). AI hali ulanmagan.'
+ : 'Video tanlanmagan.';
+});
+document.getElementById('start').addEventListener('click',()=>{
+ status.textContent=video.files.length
+ ? 'Video tanlandi, ammo haqiqiy tarjima uchun AI serveri hali ulanmagan.'
+ : 'Avval video faylini tanlang.';
+});
+</script>
+</body>
+</html>
